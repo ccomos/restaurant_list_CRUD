@@ -41,10 +41,23 @@ app.get('/', (req, res) => {
 //route setting for show detail page
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
-  console.log(id)
   return restaurant.findById(id)
     .lean()
     .then((restaurant) => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+//route setting for creat page
+app.get('/new', (req, res) => {
+  res.render('new')
+})
+
+//post route setting for receiving the data from creat page
+app.post('/new', (req, res) => {
+  const newRestaurant = req.body
+  //console.log(newRestaurant)
+  return restaurant.create(newRestaurant)
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
