@@ -61,6 +61,28 @@ app.post('/new', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//route setting for edit page
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurants/:id/edit', (req, res) => {
+  console.log("run edit")
+  const id = req.params.id
+  const editInfo = req.body
+  return restaurant.findById(id)
+    .then(restaurant => {
+      restaurant = Object.assign(restaurant, editInfo) //Object.assign(target, sources) 複製Sources所有的屬性至目標 target物件
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.log(error))
+})
+
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const restaurant = restaurantList.results.filter(rst => {
