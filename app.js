@@ -3,10 +3,11 @@ const express = require('express')
 const app = express()
 const port = 3000
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
 //require express-handlebars here
 const exphbs = require('express-handlebars')
-const restaurantList = require('./restaurant.json') //填寫路徑載入檔案
+const restaurant = require('./models/restaurant') //填寫路徑載入檔案
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -23,19 +24,28 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // setting static files
 app.use(express.static('public'))
 
 //routes setting
 app.get('/', (req, res) => {
-  res.render('index', { restaurant: restaurantList.results })
+  //res.render('index', { restaurant: restaurantList.results })
+  restaurant.find() //取出 model裡的資料
+    .lean()
+    .then(restaurant => res.render('index', { restaurant }))
+    .catch(error => console.log(error))
 })
 
 //route setting for show detail page
 app.get('/restaurants/:id', (req, res) => {
-  const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.id)
-  res.render('show', { restaurant: restaurant })
+  const id = req.params.id
+  console.log(id)
+  return restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
 })
 
 app.get('/search', (req, res) => {
