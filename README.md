@@ -1,7 +1,7 @@
 # 餐廳清單
 
 ## Features
- - 在首頁可瀏覽所有餐廳及簡單資訊
+ - 在首頁可瀏覽所有餐廳及簡單資訊、並可排序
  - 點選餐廳可進入瀏覽詳細資訊
  - 搜尋餐廳名稱或類別找到特定的餐廳
  - 使用者可以新增、修改、刪除餐廳資訊
@@ -48,3 +48,4 @@ npm run dev //執行程式, 成功執行下會出現
 - express-handlebars
 - mongoDB
 - mongoose
+- method-override
