@@ -38,6 +38,16 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.post('/', (req, res) => {
+  //console.log(req.body)
+  const sortBy = req.body.sortBy
+  restaurant.find()
+    .lean()
+    .sort(sortBy)
+    .then(restaurant => res.render('index', { restaurant }))
+    .catch(error => console.log(error))
+})
+
 //route setting for show detail page
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id

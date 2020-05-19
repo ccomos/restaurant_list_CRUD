@@ -1,23 +1,38 @@
 <!-- partial:index.partial.html -->
 <!-- search bar -->
 <div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby=" search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+  <div class="row">
+    <div class="search-bar-outer col-9">
+      <div class="search-bar-inner">
+        <form action="/search">
+          <h4 class="mb-2">尋找餐廳：</h4>
+          <div class="input-group">
+            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+              value="{{keyword}}" aria-describedby=" search-button">
+            <div class="input-group-append">
+              <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            </div>
           </div>
-        </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-2 mt-3">
+      <form action="/" method="post">
+        <select name="sortBy" class="custom-select" onchange="this.form.submit()">
+          <option selected>Sort by</option>
+          <option value="name">A->Z</option>
+          <option value="-name">Z->A</option>
+          <option value="category">類別</option>
+          <option value="location">地區</option>
+        </select>
       </form>
     </div>
   </div>
 </div>
+<!-- sort bar -->
+
 <!-- restaurant list -->
-<div class="container mt-5">
+<div class="container mt-2">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
