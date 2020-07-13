@@ -1,6 +1,7 @@
 //require packages used in project
 const express = require('express')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 const port = 3000
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
@@ -23,6 +24,8 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(express.static('public')) // setting static files
+
+usePassport(app)
 app.use(routes) //express router is default to find index.js
 
 //start and listen on the Express server
