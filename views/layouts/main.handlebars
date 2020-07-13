@@ -21,13 +21,18 @@
         <a class="navbar-brand" href="/">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
             width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
-          我的餐廳清單
+          {{#if isAuthenticated}}{{ user.name}}'s {{/if}}
+          餐廳清單
         </a>
       </div>
       <div class="header-right">
+        {{#if isAuthenticated}}
         <a class="navbar-brand" href="/new">新增餐廳</a>
-        <a class="navbar-brand ml-3 " href="/">登入</a>
-        <a class="navbar-brand ml-3 mr-5" href="/">註冊</a>
+        <a class="navbar-brand ml-3 " href="/users/logout">登出</a>
+        {{else}}
+        <a class="navbar-brand ml-3 " href="/users/login">登入</a>
+        <a class="navbar-brand ml-3 mr-5" href="/users/register">註冊</a>
+        {{/if}}
       </div>
     </nav>
 

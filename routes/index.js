@@ -12,7 +12,6 @@ const { authenticator } = require('../middleware/auth')
 
 
 // 將網址結構符合 各自路徑 的 request 導向對應的模組 
-
 router.use('/new', authenticator, newCreat)
 router.use('/restaurants', authenticator, restaurants)
 router.use('/search', authenticator, search)
