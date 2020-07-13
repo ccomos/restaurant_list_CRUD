@@ -7,6 +7,7 @@ const home = require('./modules/home')
 const newCreat = require('./modules/new')
 const restaurants = require('./modules/restaurants')
 const search = require('./modules/search')
+const users = require('./modules/users')
 
 
 // 將網址結構符合 各自路徑 的 request 導向對應的模組 
@@ -14,6 +15,7 @@ router.use('/', home)
 router.use('/new', newCreat)
 router.use('/restaurants', restaurants)
 router.use('/search', search)
+router.use('/users', users)
 
 // 匯出路由器
 module.exports = router
