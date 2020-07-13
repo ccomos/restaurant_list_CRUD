@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 //post route setting for receiving the data from creat page
 router.post('/', (req, res) => {
   const newRestaurant = req.body
+  newRestaurant.userId = req.user._id
   //console.log(newRestaurant)
   return restaurant.create(newRestaurant)
     .then(() => res.redirect('/'))
