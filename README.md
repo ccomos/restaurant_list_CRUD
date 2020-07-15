@@ -1,6 +1,7 @@
 # 餐廳清單
 
 ## Features
+ - 使用者需進行註冊、登入後進行使用
  - 在首頁可瀏覽所有餐廳及簡單資訊、並可排序
  - 點選餐廳可進入瀏覽詳細資訊
  - 搜尋餐廳名稱或類別找到特定的餐廳
@@ -26,13 +27,17 @@ cd restaurant_list_CRUD  //切至專案資料夾
 npm install  //安裝套件
 ```
 
-3.載入資料seeder
+3.建立.env 於restaurant_forum專案資料夾
+
+[Click here](https://github.com/ccomos/restaurant_list_CRUD/blob/master/.env.example) to find .env example
+
+4.載入資料seeder
 
 ```
 npm run seed
 ```
 
-4.開啟程式
+5.開啟程式
 
 ```
 npm run dev //執行程式, 成功執行下會出現 
@@ -40,7 +45,7 @@ npm run dev //執行程式, 成功執行下會出現
 'mongodb connected!'
 ```
 
-5.於任一瀏覽器網址列輸入 [http://localhost:3000](http://localhost:3000) 進行瀏覽
+6.於任一瀏覽器網址列輸入 [http://localhost:3000](http://localhost:3000) 進行瀏覽
 
 ## Tooling
 - Node.js
@@ -49,3 +54,4 @@ npm run dev //執行程式, 成功執行下會出現
 - mongoDB
 - mongoose
 - method-override
+- passport
